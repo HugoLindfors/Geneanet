@@ -18650,6 +18650,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Create.cshtml",
+      "TargetPath": "Views\\Home\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -18670,6 +18675,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Edit.cshtml",
+      "TargetPath": "Views\\Home\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -18677,6 +18687,16 @@
     {
       "FilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Delete.cshtml",
+      "TargetPath": "Views\\Home\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Details.cshtml",
+      "TargetPath": "Views\\Home\\Details.cshtml",
       "FileKind": "mvc"
     }
   ],

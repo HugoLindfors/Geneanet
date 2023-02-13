@@ -1,4 +1,8 @@
-﻿@{
+﻿@using MongoDB.Driver;
+@using MongoDB.Bson;
+@using Geneanet.Controllers;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +10,8 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@foreach (var member in new MongoClient("mongodb://localhost:27017").GetDatabase("GenealogyDB").GetCollection<BsonDocument>("Members").Find(new BsonDocument()).FirstOrDefault().ToList())
+{
+    <p>@member</p>
+}
