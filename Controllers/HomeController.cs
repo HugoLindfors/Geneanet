@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Geneanet.Models;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
 
 namespace Geneanet.Controllers;
 
@@ -15,25 +19,26 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    MongoClient dbClient = new MongoClient("mongodb://localhost:27017"); // Connect to MongoDB client
-
-    List<BsonElement>? members = null;
+    static MongoClient dbClient = new MongoClient("mongodb://localhost:27017"); // Connect to the MongoDB client
+    static IMongoDatabase database = dbClient.GetDatabase("GenealogyDB"); // Connect to the database
+    static IMongoCollection<BsonDocument>? collection = database.GetCollection<BsonDocument>("Members"); // Connect to the Members collection
+    static List<BsonDocument>? documents = collection.Find(new BsonDocument()).ToList(); // Convert the collection to a list of BsonDocuments
 
     // GET: Members
     public IActionResult Index()
     {
-        members = dbClient
-            .GetDatabase("GenealogyDB")
-            .GetCollection<BsonDocument>("Members")
-            .Find(new BsonDocument())
-            .FirstOrDefault()
-            .ToList();
-            
-        foreach (var member in members)
+        if (documents == null) { return NotFound(); }
+
+        foreach(BsonDocument document in documents)
         {
-            Console.WriteLine(member);
+            //Console.WriteLine(document.ToString());
+
+            Member deptObj = BsonSerializer.Deserialize<Member>(document);
+
+            Console.WriteLine($"{deptObj.FirstName} {deptObj.LastName}");
         }
-        return View(members);
+
+        return View(documents);
     }
 
     // GET: Members/Details/:id

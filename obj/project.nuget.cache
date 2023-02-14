@@ -1,13 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "Op7Il9EWSvbwDsHEW4dVaYLlPaT/IEEbTy09osD/FdlKitX7txys5EdZzaU46ChAtZ5lQkQ2+MHPkIfdo9fizA==",
+  "dgSpecHash": "nURse0Rm8R4uOWL6drUTY3WOeiOef3U8N/8yKwKIoQbmooNe1Wxo+7y5Um4DyHOBQPFr7hKtt24MaGwV7AILew==",
   "success": true,
   "projectFilePath": "/Users/hugo.lindfors3/Source/Repos/Geneanet/Geneanet.csproj",
   "expectedPackageFiles": [
     "/Users/hugo.lindfors3/.nuget/packages/awssdk.core/3.7.100.14/awssdk.core.3.7.100.14.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/awssdk.securitytoken/3.7.100.14/awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/dnsclient/1.6.1/dnsclient.1.6.1.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.configuration/7.0.0/microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.configuration.abstractions/7.0.0/microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.configuration.fileextensions/7.0.0/microsoft.extensions.configuration.fileextensions.7.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.configuration.json/7.0.0/microsoft.extensions.configuration.json.7.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.fileproviders.abstractions/7.0.0/microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.fileproviders.physical/7.0.0/microsoft.extensions.fileproviders.physical.7.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.filesystemglobbing/7.0.0/microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.logging.abstractions/2.0.0/microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/microsoft.win32.registry/5.0.0/microsoft.win32.registry.5.0.0.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/mongodb.bson/2.19.0/mongodb.bson.2.19.0.nupkg.sha512",
@@ -20,6 +28,8 @@
     "/Users/hugo.lindfors3/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/system.security.accesscontrol/5.0.0/system.security.accesscontrol.5.0.0.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/system.security.principal.windows/5.0.0/system.security.principal.windows.5.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
+    "/Users/hugo.lindfors3/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
     "/Users/hugo.lindfors3/.nuget/packages/zstdsharp.port/0.6.2/zstdsharp.port.0.6.2.nupkg.sha512"
   ],
   "logs": []
