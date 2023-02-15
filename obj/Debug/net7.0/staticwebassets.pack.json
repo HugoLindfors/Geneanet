@@ -9,10 +9,6 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
-      "Id": "/Users/hugo.lindfors3/Source/Repos/Geneanet/wwwroot/favicon.ico",
-      "PackagePath": "staticwebassets/favicon.ico"
-    },
-    {
       "Id": "/Users/hugo.lindfors3/Source/Repos/Geneanet/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

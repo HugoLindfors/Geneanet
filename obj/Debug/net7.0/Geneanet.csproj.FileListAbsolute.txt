@@ -34,7 +34,6 @@
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/staticwebassets.pack.json
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/staticwebassets.build.json
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/staticwebassets.development.json
-/Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/scopedcss/bundle/Geneanet.styles.css
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/scopedcss/projectbundle/Geneanet.bundle.scp.css
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/Geneanet.csproj.CopyComplete
@@ -43,3 +42,4 @@
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/Geneanet.pdb
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/Geneanet.genruntimeconfig.cache
 /Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/ref/Geneanet.dll
+/Users/hugo.lindfors3/Source/Repos/Geneanet/obj/Debug/net7.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css

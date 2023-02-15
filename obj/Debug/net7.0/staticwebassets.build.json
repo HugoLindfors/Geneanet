@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aYU+ucKVJiIQpvknd0lQwWKeD7ufZtJOlKsjkNQJoxc=",
+  "Hash": "iRBA9+CI5iMUsT5QlhiAJkQ7wMEkLYNO1glkAPGNyXM=",
   "Source": "Geneanet",
   "BasePath": "_content/Geneanet",
   "Mode": "Default",
@@ -66,23 +66,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
-    },
-    {
-      "Identity": "/Users/hugo.lindfors3/Source/Repos/Geneanet/wwwroot/favicon.ico",
-      "SourceId": "Geneanet",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/hugo.lindfors3/Source/Repos/Geneanet/wwwroot/",
-      "BasePath": "_content/Geneanet",
-      "RelativePath": "favicon.ico",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
       "Identity": "/Users/hugo.lindfors3/Source/Repos/Geneanet/wwwroot/js/site.js",

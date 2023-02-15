@@ -23,28 +23,54 @@ public class HomeController : Controller
     static IMongoDatabase database = dbClient.GetDatabase("GenealogyDB"); // Connect to the database
     static IMongoCollection<BsonDocument>? collection = database.GetCollection<BsonDocument>("Members"); // Connect to the Members collection
     static List<BsonDocument>? documents = collection.Find(new BsonDocument()).ToList(); // Convert the collection to a list of BsonDocuments
+    List<Member> members = new List<Member>(); // Creates member list
+
+    string JSONString = "";
 
     // GET: Members
     public IActionResult Index()
     {
-        if (documents == null) { return NotFound(); }
+        if (documents == null)
+            return NotFound();
+
 
         foreach(BsonDocument document in documents)
         {
-            //Console.WriteLine(document.ToString());
+            JSONString += document + ",";
 
-            Member deptObj = BsonSerializer.Deserialize<Member>(document);
+            Member member = BsonSerializer.Deserialize<Member>(document);
 
-            Console.WriteLine($"{deptObj.FirstName} {deptObj.LastName}");
+            members.Add(member);
         }
 
-        return View(documents);
+        foreach(Member member in members)
+        {
+            //Console.WriteLine($"{member.FirstName} {member.LastName}");
+        }
+
+        JSONString = JSONString.Remove(JSONString.Length - 1, 1); 
+        JSONString = "[" + JSONString + "]";
+
+        return View(members);
     }
 
     // GET: Members/Details/:id
     public IActionResult Details(string? id)
     {
-        if (id == null) { return NotFound(); }
+        if (documents == null)
+            return NotFound();
+
+        else if (id == null)
+            return NotFound();
+
+        foreach(BsonDocument document in documents)
+        {
+            Member member = BsonSerializer.Deserialize<Member>(document);
+
+            if (member.Id == id)
+                Console.WriteLine($"{member.FirstName} {member.LastName}");
+        }
+
         return View();
     }
 
@@ -57,19 +83,17 @@ public class HomeController : Controller
     // GET: Members/Edit/:id
     public IActionResult Edit(string? id)
     {
-        if (id == null) { return NotFound(); }
+        if (id == null)
+            return NotFound();
+
         return View();
     }
 
     // GET: Members/Edit/:id
     public IActionResult Delete(string? id)
     {
-        if (id == null) { return NotFound(); }
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
+        if (id == null)
+            return NotFound();
         return View();
     }
 
