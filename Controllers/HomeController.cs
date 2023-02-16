@@ -18,7 +18,7 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-    
+
     static MongoClient dbClient = new MongoClient("mongodb://localhost:27017"); // Connect to the MongoDB client
     static IMongoDatabase database = dbClient.GetDatabase("GenealogyDB"); // Connect to the database
     static IMongoCollection<BsonDocument>? collection = database.GetCollection<BsonDocument>("Members"); // Connect to the Members collection
@@ -35,7 +35,7 @@ public class HomeController : Controller
 
         members.Clear();
 
-        foreach(BsonDocument document in documents)
+        foreach (BsonDocument document in documents)
         {
             Member member = BsonSerializer.Deserialize<Member>(document);
             members.Add(member);
@@ -57,10 +57,10 @@ public class HomeController : Controller
 
         members.Clear();
 
-        foreach(BsonDocument document in documents)
+        foreach (BsonDocument document in documents)
         {
             Member member = BsonSerializer.Deserialize<Member>(document);
-            
+
             if (member.Id == id)
             {
                 return View(member);
@@ -87,7 +87,7 @@ public class HomeController : Controller
 
         if (member.FirstName == null)
             return RedirectToAction(nameof(Index));
-        
+
         if (member.Patronymic == null)
             member.Patronymic = "";
 
@@ -120,7 +120,7 @@ public class HomeController : Controller
                 { "Notes", member.Notes },
                 { "Source", member.Source }
             };
-            
+
             if (collection != null)
                 collection.InsertOne(document);
 
@@ -141,7 +141,61 @@ public class HomeController : Controller
         return View();
     }
 
-    // GET: Members/Edit/:id
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit([Bind("Id,LastName,FirstName,Patronymic,Gender,Nationality,Occupation,Notes,Source")] Member updatedMember)
+    {
+        documents = collection.Find(new BsonDocument()).ToList(); // Convert the collection to a list of BsonDocuments
+
+        if (ModelState.IsValid)
+        {
+            foreach (BsonDocument document in documents)
+            {
+                Member oldMember = BsonSerializer.Deserialize<Member>(document);
+
+                if (oldMember.Id == updatedMember.Id)
+                {
+                    Console.WriteLine(oldMember.Id + " == " + updatedMember.Id);
+
+                    if (collection != null)
+                    {
+                        Console.WriteLine("Collection is not NULL!");
+                        FilterDefinition<BsonDocument>? filter = Builders<BsonDocument>.Filter.Eq("_id", oldMember.Id);
+
+                        UpdateDefinition<BsonDocument>? update = Builders<BsonDocument>.Update.Set("LastName", updatedMember.LastName);
+                        collection.UpdateOne(filter, update);
+
+                        update = Builders<BsonDocument>.Update.Set("FirstName", updatedMember.FirstName);
+                        collection.UpdateOne(filter, update);
+
+                        update = Builders<BsonDocument>.Update.Set("Patronymic", updatedMember.Patronymic);
+                        collection.UpdateOne(filter, update);
+
+                        update = Builders<BsonDocument>.Update.Set("Gender", updatedMember.Gender);
+                        collection.UpdateOne(filter, update);
+
+                        update = Builders<BsonDocument>.Update.Set("Nationality", updatedMember.Nationality);
+                        collection.UpdateOne(filter, update);
+
+                        update = Builders<BsonDocument>.Update.Set("Occupation", updatedMember.Occupation);
+                        collection.UpdateOne(filter, update);
+
+                        update = Builders<BsonDocument>.Update.Set("Notes", updatedMember.Notes);
+                        collection.UpdateOne(filter, update);
+
+                        update = Builders<BsonDocument>.Update.Set("Source", updatedMember.Source);
+                        collection.UpdateOne(filter, update);
+
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+            }
+        }
+
+        return View();
+    }
+
+    // GET: Members/Delete/:id
     public IActionResult Delete(string? id)
     {
         if (id == null)
