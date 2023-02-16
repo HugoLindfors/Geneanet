@@ -18,38 +18,28 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
+    
     static MongoClient dbClient = new MongoClient("mongodb://localhost:27017"); // Connect to the MongoDB client
     static IMongoDatabase database = dbClient.GetDatabase("GenealogyDB"); // Connect to the database
     static IMongoCollection<BsonDocument>? collection = database.GetCollection<BsonDocument>("Members"); // Connect to the Members collection
     static List<BsonDocument>? documents = collection.Find(new BsonDocument()).ToList(); // Convert the collection to a list of BsonDocuments
-    List<Member> members = new List<Member>(); // Creates member list
-
-    string JSONString = "";
+    static List<Member> members = new List<Member>(); // Creates member list
 
     // GET: Members
     public IActionResult Index()
     {
+        documents = collection.Find(new BsonDocument()).ToList(); // Convert the collection to a list of BsonDocuments
+
         if (documents == null)
             return NotFound();
 
+        members.Clear();
 
         foreach(BsonDocument document in documents)
         {
-            JSONString += document + ",";
-
             Member member = BsonSerializer.Deserialize<Member>(document);
-
             members.Add(member);
         }
-
-        foreach(Member member in members)
-        {
-            //Console.WriteLine($"{member.FirstName} {member.LastName}");
-        }
-
-        JSONString = JSONString.Remove(JSONString.Length - 1, 1); 
-        JSONString = "[" + JSONString + "]";
 
         return View(members);
     }
@@ -57,26 +47,88 @@ public class HomeController : Controller
     // GET: Members/Details/:id
     public IActionResult Details(string? id)
     {
+        documents = collection.Find(new BsonDocument()).ToList(); // Convert the collection to a list of BsonDocuments
+
         if (documents == null)
             return NotFound();
 
         else if (id == null)
             return NotFound();
 
+        members.Clear();
+
         foreach(BsonDocument document in documents)
         {
             Member member = BsonSerializer.Deserialize<Member>(document);
-
+            
             if (member.Id == id)
-                Console.WriteLine($"{member.FirstName} {member.LastName}");
+            {
+                return View(member);
+            }
         }
 
-        return View();
+        return NotFound();
     }
 
     // GET: Members/Create
     public IActionResult Create()
     {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create([Bind("Id,LastName,FirstName,Patronymic,Gender,Nationality,Occupation,Notes,Source")] Member member)
+    {
+        documents = collection.Find(new BsonDocument()).ToList(); // Convert the collection to a list of BsonDocuments
+
+        if (member.LastName == null)
+            return RedirectToAction(nameof(Index));
+
+        if (member.FirstName == null)
+            return RedirectToAction(nameof(Index));
+        
+        if (member.Patronymic == null)
+            member.Patronymic = "";
+
+        if (member.Gender == null)
+            return RedirectToAction(nameof(Index));
+
+        if (member.Nationality == null)
+            member.Nationality = "";
+
+        if (member.Occupation == null)
+            member.Occupation = "";
+
+        if (member.Notes == null)
+            member.Notes = "";
+
+        if (member.Source == null)
+            member.Source = "";
+
+        if (ModelState.IsValid)
+        {
+            Console.WriteLine(member.LastName);
+            BsonDocument document = new BsonDocument
+            {
+                { "LastName", member.LastName },
+                { "FirstName", member.FirstName },
+                { "Patronymic", member.Patronymic },
+                { "Gender", member.Gender },
+                { "Nationality", member.Nationality },
+                { "Occupation", member.Occupation },
+                { "Notes", member.Notes },
+                { "Source", member.Source }
+            };
+            
+            if (collection != null)
+                collection.InsertOne(document);
+
+            else
+                Console.WriteLine("Fail! Collection is NULL!");
+
+            return RedirectToAction(nameof(Index));
+        }
         return View();
     }
 
