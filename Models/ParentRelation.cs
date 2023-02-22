@@ -10,5 +10,5 @@ public class ParentRelation
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; } = null;
     public string? Parent { get; set; } = null;
-    public List<string>? Children { get; set; } = null;
+    public List<string>? Child { get; set; } = null;
 }

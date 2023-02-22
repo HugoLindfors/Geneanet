@@ -36,4 +36,5 @@ public class Member
     
     [Display(Name = "Source")]
     public string? Source { get; set; } = null;
+    public string? Child { get; set; } = null;
 }

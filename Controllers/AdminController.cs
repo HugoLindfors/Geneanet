@@ -68,7 +68,18 @@ public class AdminController : Controller
 
             if (member.Id == id)
             {
-                return View(member);
+
+                foreach (BsonDocument childDoc in documents)
+                {
+                    Member child = BsonSerializer.Deserialize<Member>(childDoc);
+
+                    if (child.Id == member.Child)
+                    {
+                        ViewBag.Child = child;
+                        return View(member);
+                    }
+
+                }
             }
         }
 
