@@ -16,20 +16,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/hugo.lindfors3/Source/Repos/Geneanet
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGUuY3NodG1s
+[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Admin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZWxldGUuY3NodG1s
+[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Admin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZXRhaWxzLmNzaHRtbA==
+[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Admin/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9FZGl0LmNzaHRtbA==
+[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/hugo.lindfors3/Source/Repos/Geneanet/Views/Home/Index.cshtml]

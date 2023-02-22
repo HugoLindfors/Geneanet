@@ -1,5 +1,8 @@
+// To make MongoDB's ObjectID work in C# the following namespaces must be included
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+
+// This namespace is included to improve the way some of the varaible names look on the frontend, like FirstName to "First Name"
 using System.ComponentModel.DataAnnotations;
 
 namespace Geneanet.Models;
@@ -8,7 +11,7 @@ public class Member
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id { get; set; } = null;
+    public string? Id { get; set; } = null; // Initially every varaible is set to NULL
 
     [Display(Name = "Family Name")]
     public string? LastName { get; set; } = null;
