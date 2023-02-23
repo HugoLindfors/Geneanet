@@ -64,22 +64,49 @@ public class AdminController : Controller
 
         foreach (BsonDocument document in documents)
         {
-            Member member = BsonSerializer.Deserialize<Member>(document);
+            Member? member = BsonSerializer.Deserialize<Member>(document);
+
+            List<Member>? children = new List<Member>();
+            List<Member>? parents = new List<Member>();
 
             if (member.Id == id)
             {
-
-                foreach (BsonDocument childDoc in documents)
+                if (member.Children != null)
                 {
-                    Member child = BsonSerializer.Deserialize<Member>(childDoc);
-
-                    if (child.Id == member.Child)
+                    foreach (BsonDocument childDoc in documents)
                     {
-                        ViewBag.Child = child;
-                        return View(member);
-                    }
+                        Member? child = BsonSerializer.Deserialize<Member>(childDoc);
 
+                        foreach (string? innerChild in member.Children)
+                        {
+                            if (child.Id == innerChild)
+                            {
+                                children.Add(child);
+                            }
+                        }
+                    }
                 }
+
+                if (member.Parents != null)
+                {
+                    foreach (BsonDocument parentDoc in documents)
+                    {
+                        Member? parent = BsonSerializer.Deserialize<Member>(parentDoc);
+
+                        foreach (string? innerParent in member.Parents)
+                        {
+                            if (parent.Id == innerParent)
+                            {
+                                parents.Add(parent);
+                            }
+                        }
+                    }
+                }
+
+
+                ViewBag.Children = children;
+                ViewBag.Parents = parents;
+                return View(member);
             }
         }
 
@@ -278,7 +305,7 @@ public class AdminController : Controller
                     if (collection != null)
                     {
                         FilterDefinition<BsonDocument> deleteFilter = Builders<BsonDocument>.Filter.Eq("LastName", $"{oldMember.LastName}");
-                        
+
                         collection.DeleteOne(deleteFilter);
 
                         return RedirectToAction(nameof(Index));

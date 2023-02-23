@@ -8,6 +8,24 @@
 
 <div>
     <h4>Member</h4>
+    <div class="row">
+        <div class="col-6">
+            <h5 style="color:blue">Father</h5>
+            @foreach (var father in ViewBag.Parents)
+            {
+                <span style="color:blue">@if(father.Gender=="Male"){<span>♂ @father.FirstName @father.LastName</span>}</span>
+            }
+        </div>
+
+        <div class="col-6">
+            <h5 style="color:hotpink">Mother</h5>
+            @foreach (var mother in ViewBag.Parents)
+            {
+                <span style="color:hotpink">@if(mother.Gender=="Female"){<span>♀ @mother.FirstName @mother.LastName</span>}</span>
+            }
+        </div>
+
+    </div>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -61,7 +79,18 @@
     </dl>
     <hr>
     <h5>Children</h5>
-    @ViewBag.Child.FirstName @ViewBag.Child.LastName
+    @foreach (var child in ViewBag.Children)
+    {
+        string? color = "gray";
+
+        if (child.Gender == "Male") 
+            color = "blue";
+
+        else if (child.Gender == "Female") 
+            color = "hotpink";
+
+        <p style="color:@color"><strong>@if(child.Gender=="Male"){<span>♂</span>} else if(child.Gender=="Female"){<span>♀</span>} @child.FirstName @if(child.Patronymic != null && child.Patronymic != "") {@child.Patronymic} @child.LastName</strong></p>
+    }
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
