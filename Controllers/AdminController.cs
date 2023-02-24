@@ -188,12 +188,58 @@ public class AdminController : Controller
 
         members.Clear();
 
+        List<Member>? children = new List<Member>();
+        List<Member>? parents = new List<Member>();
+        
+        foreach (BsonDocument document in documents)
+        {
+            Member member = BsonSerializer.Deserialize<Member>(document);
+
+            members.Add(member);
+        }
+
         foreach (BsonDocument document in documents)
         {
             Member member = BsonSerializer.Deserialize<Member>(document);
 
             if (member.Id == id)
             {
+                if (member.Children != null)
+                {
+                    foreach (BsonDocument childDoc in documents)
+                    {
+                        Member? child = BsonSerializer.Deserialize<Member>(childDoc);
+
+                        foreach (string? innerChild in member.Children)
+                        {
+                            if (child.Id == innerChild)
+                            {
+                                children.Add(child);
+                            }
+                        }
+                    }
+                }
+
+                if (member.Parents != null)
+                {
+                    foreach (BsonDocument parentDoc in documents)
+                    {
+                        Member? parent = BsonSerializer.Deserialize<Member>(parentDoc);
+
+                        foreach (string? innerParent in member.Parents)
+                        {
+                            if (parent.Id == innerParent)
+                            {
+                                parents.Add(parent);
+                            }
+                        }
+                    }
+                }
+
+
+                ViewBag.Children = children;
+                ViewBag.Parents = parents;
+                ViewBag.Members = members;
                 return View(member);
             }
         }

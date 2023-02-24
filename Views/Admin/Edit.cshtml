@@ -6,7 +6,46 @@
 
 <h1>Edit</h1>
 
-<h4>Member</h4>
+<h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.Patronymic) @Html.DisplayFor(model =>
+    model.LastName)</h4>
+<div class="row">
+    <div class="col-6">
+        <h5 style="color:blue">Father</h5>
+
+        <span style="color:blue">
+            <span>♂
+                <select>
+                    @foreach (var member in ViewBag.Members)
+                    {
+                        if (member.Gender == "Male")
+                        {
+                            <option>@member.FirstName @member.LastName</option>
+                        }
+                    }
+                </select>
+            </span>
+        </span>
+    </div>
+
+    <div class="col-6">
+        <h5 style="color:hotpink">Mother</h5>
+
+        <span style="color:hotpink">
+            <span>♀
+                <select>
+                    @foreach (var member in ViewBag.Members)
+                    {
+                        if (member.Gender == "Female")
+                        {
+                            <option>@member.FirstName @member.LastName</option>
+                        }
+                    }
+                </select>
+            </span>
+        </span>
+    </div>
+
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -62,6 +101,32 @@
             </div>
         </form>
     </div>
+    <hr>
+    <h5>Children</h5>
+    @foreach (var child in ViewBag.Children)
+    {
+        string? color = "gray";
+
+        if (child.Gender == "Male")
+            color = "blue";
+
+        else if (child.Gender == "Female")
+            color = "hotpink";
+
+        <p style="color:@color"><strong>@if (child.Gender == "Male")
+                {
+                    <span>♂</span>
+                }
+                else
+            if (child.Gender == "Female")
+                {
+                    <span>♀</span>
+                } @child.FirstName @if (child.Patronymic != null && child.Patronymic
+            != "")
+                {
+                    @child.Patronymic
+                } @child.LastName</strong></p>
+    }
 </div>
 
 <div>
@@ -69,5 +134,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
